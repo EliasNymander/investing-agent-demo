@@ -1,0 +1,63 @@
+/* ── Loading skeleton ───────────────────────────────────────────────────── */
+@keyframes db-shimmer {
+  0%   { background-position: -600px 0; }
+  100% { background-position:  600px 0; }
+}
+
+.db-skeleton-block {
+  border-radius: 8px;
+  background: linear-gradient(
+    90deg,
+    var(--surface) 25%,
+    var(--surface-hover, #2a2a2a) 50%,
+    var(--surface) 75%
+  );
+  background-size: 600px 100%;
+  animation: db-shimmer 1.4s infinite linear;
+}
+
+.db-skeleton-hero {
+  height: 120px;
+  margin: 24px 32px 16px;
+}
+
+.db-skeleton-cards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  margin: 0 32px 24px;
+}
+
+.db-skeleton-card {
+  height: 90px;
+}
+
+.db-skeleton-table {
+  height: 200px;
+  margin: 0 32px 24px;
+}
+
+@media (max-width: 900px) {
+  .db-skeleton-cards { grid-template-columns: repeat(2, 1fr); }
+  .db-skeleton-hero, .db-skeleton-cards, .db-skeleton-table { margin-left: 16px; margin-right: 16px; }
+}
+
+/* ── Top panel row: TodayPanel (compact left) ─────────────────────────── */
+.db-top-row {
+  padding: 0 32px;
+  margin-bottom: 24px;
+}
+
+@media (max-width: 900px) {
+  .db-top-row {
+    grid-template-columns: 1fr;
+    padding: 0 16px;
+  }
+}
+
+@media (max-width: 640px) {
+  .db-top-row {
+    padding: 0 12px;
+    margin-bottom: 16px;
+  }
+}

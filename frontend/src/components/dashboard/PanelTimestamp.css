@@ -1,0 +1,50 @@
+.pts-wrap {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  flex-shrink: 0;
+}
+
+.pts-stale-msg {
+  font-size: 10px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.pts-wrap--warn  .pts-stale-msg { color: var(--yellow); }
+.pts-wrap--stale .pts-stale-msg { color: var(--red); }
+
+.pts-label {
+  font-size: 10px;
+  font-family: var(--font-mono);
+  color: var(--text-dim);
+  white-space: nowrap;
+}
+
+.pts-wrap--warn  .pts-label { color: var(--yellow); }
+.pts-wrap--stale .pts-label { color: var(--red); opacity: 0.8; }
+
+.pts-btn {
+  font-size: 12px;
+  color: var(--text-dim);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0 2px;
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+  transition: color 0.12s;
+}
+
+.pts-btn:hover { color: var(--accent); }
+
+@keyframes pts-spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+.pts-btn--spinning {
+  animation: pts-spin 0.7s linear infinite;
+  color: var(--accent);
+}

@@ -1,0 +1,29 @@
+.period-selector {
+  display: flex;
+  gap: 4px;
+}
+
+.period-btn {
+  padding: 5px 12px;
+  border-radius: var(--radius-sm);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  color: var(--text-muted);
+  background: transparent;
+  border: 1px solid transparent;
+  cursor: pointer;
+  font-family: var(--font-mono);
+  transition: all 0.12s;
+}
+
+.period-btn:hover {
+  color: var(--text);
+  background: var(--surface-2);
+}
+
+.period-btn.active {
+  color: var(--accent);
+  background: var(--green-dim);
+  border-color: var(--accent);
+}

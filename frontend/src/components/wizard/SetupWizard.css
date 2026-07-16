@@ -1,0 +1,607 @@
+.wizard-overlay {
+  position: fixed;
+  inset: 0;
+  background: var(--bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+  padding: 24px;
+}
+
+.wizard-modal {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  width: 100%;
+  max-width: 680px;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.wizard-header {
+  padding: 28px 32px 16px;
+  border-bottom: 1px solid var(--border);
+}
+
+.wizard-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.wizard-subtitle {
+  font-size: 13px;
+  color: var(--text-muted);
+  margin-top: 6px;
+}
+
+.wizard-body {
+  flex: 1;
+  overflow-y: auto;
+  padding: 24px 32px;
+}
+
+.wizard-footer {
+  padding: 16px 32px;
+  border-top: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.wizard-btn {
+  padding: 9px 20px;
+  border-radius: var(--radius);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  border: 1px solid var(--border);
+  font-family: var(--font);
+  transition: all 0.15s;
+}
+
+.wizard-btn--back {
+  background: transparent;
+  color: var(--text-muted);
+}
+
+.wizard-btn--back:hover { color: var(--text); }
+
+.wizard-btn--next,
+.wizard-btn--finish {
+  background: var(--accent);
+  color: #000;
+  border-color: var(--accent);
+}
+
+.wizard-btn--next:hover,
+.wizard-btn--finish:hover { opacity: 0.85; }
+
+.wizard-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+/* Shared form styles for wizard steps */
+.wizard-step-title {
+  font-size: 15px;
+  font-weight: 700;
+  margin-bottom: 4px;
+  color: var(--text);
+}
+
+.wizard-step-desc {
+  font-size: 13px;
+  color: var(--text-muted);
+  margin-bottom: 20px;
+}
+
+.wizard-platform-header {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin: 20px 0 10px;
+  flex-wrap: wrap;
+}
+
+.wizard-platform-title {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+}
+
+.wizard-platform-subtitle {
+  font-size: 11px;
+  color: var(--text-dim);
+  font-weight: 400;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+/* ── Holding rows (Step 1) ───────────────────────────────────── */
+
+.wizard-holding-group {
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--border);
+}
+
+.wizard-holding-row1 {
+  display: grid;
+  grid-template-columns: 90px 1fr 96px 54px 24px;
+  gap: 8px;
+  align-items: center;
+}
+
+.wizard-holding-row2 {
+  display: grid;
+  grid-template-columns: 120px 120px 140px;
+  gap: 8px;
+  padding-left: 98px;
+  margin-top: 6px;
+}
+
+.wizard-holding-row3 {
+  padding-left: 98px;
+  margin-top: 6px;
+}
+
+.wizard-lots-block {
+  padding-left: 98px;
+  margin-top: 6px;
+}
+
+.wizard-lots-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 6px;
+  flex-wrap: wrap;
+}
+
+.wizard-lots-derived {
+  font-size: 11px;
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+}
+
+.wizard-lot-row {
+  display: grid;
+  grid-template-columns: 110px 140px 140px 24px;
+  gap: 8px;
+  align-items: start;
+  margin-bottom: 6px;
+}
+
+.wizard-add-lot-btn {
+  background: transparent;
+  border: 1px dashed var(--border-light);
+  color: var(--accent);
+  border-radius: var(--radius-sm);
+  padding: 5px 12px;
+  font-size: 11px;
+  cursor: pointer;
+  font-family: var(--font);
+  transition: all 0.15s;
+}
+
+.wizard-add-lot-btn:hover { border-color: var(--accent); background: var(--green-dim); }
+
+.wizard-field-group {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.wizard-field-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+}
+
+.wizard-holding-hint {
+  font-size: 11px;
+  padding-left: 98px;
+  margin-top: 4px;
+  line-height: 1.4;
+}
+
+.wizard-holding-hint--warn { color: var(--yellow, #fbbf24); }
+.wizard-holding-hint--info { color: var(--text-dim); }
+
+.wizard-field-hint {
+  font-size: 11px;
+  color: var(--text-dim);
+  margin-top: 2px;
+  line-height: 1.35;
+}
+
+.wizard-advanced-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding-left: 98px;
+  margin-top: 6px;
+  font-size: 11px;
+  color: var(--text-dim);
+  cursor: pointer;
+  user-select: none;
+  background: none;
+  border: none;
+  font-family: var(--font);
+}
+
+.wizard-advanced-toggle:hover { color: var(--text-muted); }
+
+.wizard-holdings-summary {
+  margin-top: 20px;
+  padding: 10px 14px;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.wizard-input {
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  color: var(--text);
+  font-size: 13px;
+  padding: 7px 10px;
+  font-family: var(--font-mono);
+  width: 100%;
+}
+
+.wizard-input:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+.wizard-input::placeholder { color: var(--text-dim); }
+
+.wizard-select {
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  color: var(--text);
+  font-size: 13px;
+  padding: 7px 10px;
+  font-family: var(--font);
+  width: 100%;
+}
+
+.wizard-select:focus { outline: none; border-color: var(--accent); }
+
+.wizard-add-btn {
+  background: transparent;
+  border: 1px dashed var(--border-light);
+  color: var(--accent);
+  border-radius: var(--radius-sm);
+  padding: 7px 14px;
+  font-size: 12px;
+  cursor: pointer;
+  margin-top: 4px;
+  font-family: var(--font);
+  transition: all 0.15s;
+}
+
+.wizard-add-btn:hover { border-color: var(--accent); background: var(--green-dim); }
+
+.wizard-rm-btn {
+  background: transparent;
+  border: none;
+  color: var(--text-dim);
+  cursor: pointer;
+  font-size: 16px;
+  padding: 4px;
+  line-height: 1;
+}
+
+.wizard-rm-btn:hover { color: var(--red); }
+
+.wizard-key-group {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.wizard-key-row {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.wizard-key-label {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+.wizard-key-note {
+  font-size: 11px;
+  color: var(--text-dim);
+}
+
+.wizard-sched-rows {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 8px;
+}
+
+.wizard-sched-row {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.wizard-sched-label {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+/* ── Demo Mode option in step-1 footer ───────────────────────────── */
+
+.wizard-demo-side {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.wizard-btn--demo {
+  background: transparent;
+  color: var(--text-dim);
+  border-color: var(--border);
+  font-size: 12px;
+  padding: 7px 12px;
+}
+
+.wizard-btn--demo:hover {
+  color: var(--text-muted);
+  border-color: var(--text-muted);
+}
+
+.wizard-demo-note {
+  font-size: 11px;
+  color: var(--text-dim);
+  max-width: 210px;
+  line-height: 1.35;
+}
+
+/* ── Display currency row ────────────────────────────────── */
+
+.wizard-display-currency-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+  padding: 10px 14px;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  flex-wrap: wrap;
+}
+
+/* ── CSV import button ───────────────────────────────────── */
+
+.wizard-import-btn {
+  margin-left: auto;
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--text-dim);
+  border-radius: var(--radius-sm);
+  padding: 4px 10px;
+  font-size: 11px;
+  cursor: pointer;
+  font-family: var(--font);
+  transition: all 0.15s;
+  white-space: nowrap;
+}
+
+.wizard-import-btn:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+/* ── Undo bar ─────────────────────────────────────────────── */
+
+.wizard-undo-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 7px 12px;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-bottom: 8px;
+  animation: wizard-undo-in 0.15s ease;
+}
+
+@keyframes wizard-undo-in {
+  from { opacity: 0; transform: translateY(-4px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.wizard-undo-btn {
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--accent);
+  border-radius: var(--radius-sm);
+  padding: 3px 10px;
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: var(--font);
+  transition: all 0.15s;
+}
+
+.wizard-undo-btn:hover {
+  border-color: var(--accent);
+  background: var(--green-dim);
+}
+
+/* ── CSV import preview panel ─────────────────────────────── */
+
+.wizard-csv-preview {
+  margin-bottom: 14px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  background: var(--surface-2);
+}
+
+.wizard-csv-preview-title {
+  padding: 8px 12px;
+  font-size: 12px;
+  color: var(--text-muted);
+  border-bottom: 1px solid var(--border);
+}
+
+.wizard-csv-error {
+  padding: 12px;
+  font-size: 12px;
+  color: var(--red, #f87171);
+}
+
+.wizard-csv-table-wrap {
+  overflow-x: auto;
+  max-height: 180px;
+  overflow-y: auto;
+}
+
+.wizard-csv-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 11px;
+}
+
+.wizard-csv-table th {
+  padding: 5px 10px;
+  text-align: left;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-dim);
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+}
+
+.wizard-csv-table td {
+  padding: 5px 10px;
+  border-bottom: 1px solid var(--border);
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+}
+
+.wizard-csv-table tr:last-child td { border-bottom: none; }
+
+.wizard-csv-actions {
+  display: flex;
+  gap: 8px;
+  padding: 10px 12px;
+  border-top: 1px solid var(--border);
+}
+
+/* ── CSV import: excluded / needs-review / issues banners ────────
+   Rendered with the same visual weight as the summary/table, not as a
+   footnote — a user with hundreds of transactions needs "why is my
+   holding missing" answered without hunting. */
+
+.wizard-csv-section {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--border);
+  font-size: 12px;
+}
+
+.wizard-csv-section-title {
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.wizard-csv-section-list {
+  margin: 0;
+  padding-left: 18px;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+.wizard-csv-section--review {
+  background: var(--red-dim, rgba(248, 113, 113, 0.12));
+}
+.wizard-csv-section--review .wizard-csv-section-title { color: var(--red, #f87171); }
+
+.wizard-csv-section--excluded {
+  background: var(--surface);
+}
+.wizard-csv-section--excluded .wizard-csv-section-title { color: var(--text-muted); }
+
+.wizard-csv-section--issues {
+  background: rgba(251, 191, 36, 0.1);
+}
+.wizard-csv-section--issues .wizard-csv-section-title { color: var(--yellow, #fbbf24); }
+
+/* ── CSV preview table: expandable per-holding lot rows ─────────── */
+
+.wizard-csv-row--clickable { cursor: pointer; }
+.wizard-csv-row--clickable:hover td { background: var(--surface); }
+
+.wizard-csv-caret {
+  width: 16px;
+  color: var(--text-dim);
+  font-size: 9px;
+}
+
+.wizard-csv-flag {
+  color: var(--yellow, #fbbf24);
+  margin-right: 3px;
+  cursor: help;
+}
+
+.wizard-csv-lot-row td {
+  color: var(--text-dim);
+  font-size: 10px;
+  background: var(--surface);
+}
+
+.wizard-csv-lot-date { font-family: var(--font-mono); }
+
+/* ── Mobile ───────────────────────────────────────────────────── */
+
+@media (max-width: 480px) {
+  .wizard-holding-row1 {
+    grid-template-columns: 80px 1fr 24px;
+    grid-template-rows: auto auto;
+  }
+
+  .wizard-holding-row1 > *:nth-child(1) { grid-column: 1; grid-row: 1; }
+  .wizard-holding-row1 > *:nth-child(2) { grid-column: 2; grid-row: 1; }
+  .wizard-holding-row1 > *:nth-child(3) { grid-column: 1; grid-row: 2; }
+  .wizard-holding-row1 > *:nth-child(4) { grid-column: 2; grid-row: 2; }
+  .wizard-holding-row1 > *:nth-child(5) { grid-column: 3; grid-row: 1; }
+
+  .wizard-holding-row2,
+  .wizard-holding-row3,
+  .wizard-holding-hint,
+  .wizard-advanced-toggle { padding-left: 0; }
+
+  .wizard-holding-row2 { grid-template-columns: 1fr 1fr; }
+
+  .wizard-lots-block { padding-left: 0; }
+  .wizard-lot-row { grid-template-columns: 1fr 1fr; grid-template-rows: auto auto; }
+
+  .wizard-import-btn { margin-left: 0; }
+}

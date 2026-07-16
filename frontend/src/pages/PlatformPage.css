@@ -1,0 +1,158 @@
+.platform-page {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.platform-page-header {
+  padding: 24px 32px 0;
+  margin-bottom: 20px;
+}
+
+.platform-back-btn {
+  font-size: 13px;
+  color: var(--text-muted);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font);
+  transition: color 0.12s;
+}
+
+.platform-back-btn:hover { color: var(--accent); }
+
+.platform-page-title-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.platform-page-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--text);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  line-height: 1.2;
+}
+
+.platform-page-icon {
+  color: var(--accent);
+  font-size: 20px;
+}
+
+.platform-page-subtitle {
+  font-size: 13px;
+  color: var(--text-muted);
+  margin-top: 4px;
+  margin-left: 30px;
+}
+
+.platform-page-summary {
+  display: flex;
+  gap: 28px;
+  flex-wrap: wrap;
+  align-items: flex-start;
+}
+
+.platform-summary-item {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  text-align: right;
+}
+
+.platform-summary-label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+}
+
+.platform-summary-value {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.text-small { font-size: 12px; font-weight: 400; }
+
+/* Total chart section */
+.platform-total-chart-section {
+  margin: 0 32px 24px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.platform-chart-toolbar {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 16px 20px 12px;
+  border-bottom: 1px solid var(--border);
+  background: var(--surface-2);
+}
+
+.platform-period-stats {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  margin-top: 4px;
+}
+
+.platform-current-val {
+  font-size: 20px;
+  font-weight: 700;
+  font-family: var(--font-mono);
+  color: var(--text);
+}
+
+.platform-period-change {
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.platform-chart-body {
+  padding: 12px 8px 8px;
+}
+
+/* Holdings grid */
+.platform-holdings-section {
+  margin: 0 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.platform-holdings-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.platform-holdings-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 16px;
+  padding-bottom: 32px;
+}
+
+.coingecko-attribution {
+  font-size: 11px;
+  color: var(--text-dim);
+}
+
+.coingecko-attribution a {
+  color: var(--accent);
+}

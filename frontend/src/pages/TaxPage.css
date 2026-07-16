@@ -1,0 +1,374 @@
+.tax-page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+}
+
+/* ── Crypto warning banner ──────────────────────────────────────────────────── */
+.tax-crypto-banner {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 24px;
+  background: rgba(240, 180, 41, 0.1);
+  border-bottom: 1px solid rgba(240, 180, 41, 0.25);
+  font-size: 12px;
+  color: var(--yellow);
+  flex-shrink: 0;
+}
+
+.tax-crypto-icon {
+  font-size: 14px;
+  flex-shrink: 0;
+}
+
+/* ── Toolbar ─────────────────────────────────────────────────────────────────── */
+.tax-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 24px;
+  border-bottom: 1px solid var(--border);
+  flex-shrink: 0;
+}
+
+.tax-year-pills {
+  display: flex;
+  gap: 4px;
+}
+
+.tax-year-pill {
+  padding: 5px 14px;
+  font-size: 12px;
+  font-weight: 600;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--text-muted);
+  cursor: pointer;
+  font-family: var(--font);
+  transition: all 0.12s;
+}
+
+.tax-year-pill:hover { color: var(--text); border-color: var(--border-light); }
+
+.tax-year-pill--active {
+  color: var(--accent);
+  background: var(--green-dim);
+  border-color: var(--accent);
+}
+
+.tax-toolbar-hint {
+  font-size: 11px;
+  color: var(--text-dim);
+  margin-left: auto;
+}
+
+/* ── Content area ────────────────────────────────────────────────────────────── */
+.tax-content {
+  padding: 20px 24px 48px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* ── Summary stat cards ──────────────────────────────────────────────────────── */
+.tax-stats-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+
+@media (max-width: 900px) {
+  .tax-stats-row { grid-template-columns: repeat(2, 1fr); }
+}
+
+.tax-stat-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 14px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.tax-stat-card--accent {
+  border-color: rgba(0, 200, 150, 0.25);
+  background: var(--green-dim);
+}
+
+.tax-stat-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+}
+
+.tax-stat-value {
+  font-size: 20px;
+  font-weight: 700;
+  font-family: var(--font-mono);
+  color: var(--text);
+  line-height: 1.2;
+}
+
+.tax-stat-value--accent { color: var(--accent); }
+
+.tax-stat-sub {
+  font-size: 11px;
+  color: var(--text-dim);
+  margin-top: 2px;
+}
+
+/* ── Chart section ───────────────────────────────────────────────────────────── */
+.tax-chart-section {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 16px 18px;
+}
+
+.tax-section-title {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  margin-bottom: 14px;
+}
+
+.tax-section-title--mt { margin-top: 4px; }
+
+/* ── Carry-forward tracker ───────────────────────────────────────────────────── */
+.carry-tracker {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--yellow);
+  border-radius: var(--radius-lg);
+  padding: 16px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.carry-tracker-title {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.carry-tracker-sub {
+  font-size: 11px;
+  color: var(--text-dim);
+  margin-top: -6px;
+}
+
+.carry-rows { display: flex; flex-direction: column; gap: 8px; }
+
+.carry-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 12px;
+}
+
+.carry-year {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  color: var(--text-muted);
+  width: 36px;
+  flex-shrink: 0;
+}
+
+.carry-original {
+  font-family: var(--font-mono);
+  color: var(--red);
+  width: 80px;
+  flex-shrink: 0;
+}
+
+.carry-bar-wrap {
+  flex: 1;
+  height: 6px;
+  background: var(--surface-2);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.carry-bar-fill {
+  height: 100%;
+  background: var(--yellow);
+  border-radius: 3px;
+  transition: width 0.3s;
+}
+
+.carry-status { min-width: 130px; text-align: right; }
+.carry-avail  { color: var(--yellow); font-weight: 600; }
+.carry-used   { color: var(--text-dim); }
+
+.carry-saving {
+  font-size: 12px;
+  color: var(--text-muted);
+  padding: 8px 12px;
+  background: rgba(240, 180, 41, 0.08);
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(240, 180, 41, 0.2);
+}
+
+.carry-saving strong { color: var(--yellow); }
+
+/* ── Platform row (label + CSV export) ──────────────────────────────────────── */
+.tax-platform-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: -12px;
+}
+
+.tax-platform-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+}
+
+.tax-csv-btn {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-dim);
+  background: none;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 4px 10px;
+  cursor: pointer;
+  font-family: var(--font);
+  transition: all 0.12s;
+}
+
+.tax-csv-btn:hover { color: var(--accent); border-color: var(--accent); background: var(--green-dim); }
+
+/* ── Vero helper ─────────────────────────────────────────────────────────────── */
+.vero-helper {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-left: 3px solid #4da6ff;
+  border-radius: var(--radius-lg);
+  padding: 16px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.vero-helper-title {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.vero-helper-sub {
+  font-size: 11px;
+  color: var(--text-dim);
+  margin-top: -8px;
+}
+
+.vero-fields { display: flex; flex-direction: column; gap: 8px; }
+
+.vero-field {
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+  padding: 10px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.vero-field--auto   { background: var(--surface-2); }
+.vero-field--manual { background: rgba(77, 166, 255, 0.05); border-color: rgba(77, 166, 255, 0.2); }
+
+.vero-field-meta {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  flex-wrap: wrap;
+}
+
+.vero-field-section {
+  font-weight: 700;
+  color: var(--text-dim);
+  letter-spacing: 0.03em;
+}
+
+.vero-field-arrow { color: var(--border-light); }
+
+.vero-field-label {
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+.vero-auto-badge {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  color: var(--accent);
+  background: var(--green-dim);
+  border: 1px solid var(--accent);
+  border-radius: var(--radius-sm);
+  padding: 1px 5px;
+}
+
+.vero-field-bottom {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.vero-field-value {
+  font-family: var(--font-mono);
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.vero-val--pos { color: var(--green); }
+.vero-val--neg { color: var(--red); }
+
+.vero-field-hint {
+  font-size: 11px;
+  color: var(--text-dim);
+  flex: 1;
+}
+
+.vero-copy-btn {
+  margin-left: auto;
+  font-size: 11px;
+  font-weight: 600;
+  color: #4da6ff;
+  background: rgba(77, 166, 255, 0.1);
+  border: 1px solid rgba(77, 166, 255, 0.3);
+  border-radius: var(--radius-sm);
+  padding: 4px 10px;
+  cursor: pointer;
+  font-family: var(--font);
+  transition: all 0.12s;
+  flex-shrink: 0;
+}
+
+.vero-copy-btn:hover { background: rgba(77, 166, 255, 0.18); }
+.vero-copy-btn--done { color: var(--accent); background: var(--green-dim); border-color: var(--accent); }
+
+/* ── Disclaimer ──────────────────────────────────────────────────────────────── */
+.tax-disclaimer {
+  font-size: 11px;
+  color: var(--text-dim);
+  line-height: 1.6;
+  padding: 12px 16px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+}
+
+.tax-disclaimer strong { color: var(--text-muted); }

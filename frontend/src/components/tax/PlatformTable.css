@@ -1,0 +1,171 @@
+.pt-section {
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  margin-bottom: 16px;
+}
+
+/* ── Section header ─────────────────────────────────────────────────────────── */
+.pt-section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 13px 18px;
+  background: var(--surface-2);
+  border-bottom: 1px solid var(--border);
+  cursor: pointer;
+  user-select: none;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.pt-section-header:hover { background: var(--surface-3, #2a2d3e); }
+
+.pt-section-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.pt-section-toggle {
+  font-size: 11px;
+  color: var(--text-dim);
+  width: 10px;
+}
+
+.pt-section-name {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.pt-crypto-warning {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: var(--yellow);
+  background: rgba(240, 180, 41, 0.12);
+  border: 1px solid rgba(240, 180, 41, 0.3);
+  border-radius: var(--radius-sm);
+  padding: 2px 7px;
+}
+
+.pt-section-stats {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 12px;
+  flex-wrap: wrap;
+}
+
+.pt-stat-label { color: var(--text-dim); font-size: 11px; }
+.pt-stat-sep   { color: var(--border-light); }
+
+.pt-stat-val {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.pt-stat-val--pos { color: var(--green); }
+.pt-stat-val--neg { color: var(--red); }
+
+/* ── Gain badge ─────────────────────────────────────────────────────────────── */
+.pt-gain-badge {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 700;
+  padding: 2px 7px;
+  border-radius: var(--radius-sm);
+}
+
+.pt-gain--pos  { background: var(--green-dim); color: var(--green); }
+.pt-gain--neg  { background: var(--red-dim);   color: var(--red);   }
+.pt-gain--zero { background: var(--surface-2); color: var(--text-muted); }
+
+/* ── Table ──────────────────────────────────────────────────────────────────── */
+.pt-table-wrap {
+  overflow-x: auto;
+}
+
+.pt-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12px;
+}
+
+.pt-table thead th {
+  padding: 8px 14px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  text-align: left;
+  border-bottom: 1px solid var(--border);
+  background: var(--surface);
+  white-space: nowrap;
+}
+
+.pt-table th.pt-num,
+.pt-table td.pt-num { text-align: right; }
+
+.pt-table tbody tr {
+  border-bottom: 1px solid var(--border);
+  transition: background 0.1s;
+}
+
+.pt-table tbody tr:last-child { border-bottom: none; }
+.pt-table tbody tr:hover { background: var(--surface-2); }
+.pt-table tbody tr.pt-row--manual { opacity: 0.85; }
+
+.pt-table td {
+  padding: 10px 14px;
+  vertical-align: middle;
+  color: var(--text);
+}
+
+.pt-asset-name   { font-size: 12px; font-weight: 600; color: var(--text); }
+.pt-asset-ticker { font-size: 10px; font-family: var(--font-mono); color: var(--text-dim); margin-top: 1px; }
+
+.pt-type-badge {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 2px 6px;
+  border-radius: var(--radius-sm);
+  background: var(--surface-2);
+  color: var(--text-muted);
+  border: 1px solid var(--border);
+}
+
+.pt-date { font-family: var(--font-mono); font-size: 11px; color: var(--text-dim); white-space: nowrap; }
+.pt-note { font-size: 11px; color: var(--text-dim); max-width: 160px; }
+
+/* ── Add manual row ─────────────────────────────────────────────────────────── */
+.pt-add-row {
+  padding: 10px 14px;
+  border-top: 1px solid var(--border);
+  background: var(--surface);
+}
+
+.pt-add-btn {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-dim);
+  background: none;
+  border: 1px dashed var(--border);
+  border-radius: var(--radius-sm);
+  padding: 5px 12px;
+  cursor: pointer;
+  font-family: var(--font);
+  transition: all 0.12s;
+}
+
+.pt-add-btn:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+  border-style: solid;
+  background: var(--green-dim);
+}

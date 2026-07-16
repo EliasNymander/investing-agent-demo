@@ -1,0 +1,144 @@
+.platform-section {
+  margin: 0 32px 24px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.platform-header:hover .platform-title { color: var(--accent); }
+.platform-header:hover .platform-drill-hint { opacity: 1; }
+
+.platform-drill-hint {
+  font-size: 11px;
+  color: var(--accent);
+  margin-left: 10px;
+  opacity: 0;
+  transition: opacity 0.15s;
+  font-weight: 500;
+}
+
+.platform-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 20px;
+  background: var(--surface-2);
+  border-bottom: 1px solid var(--border);
+}
+
+.platform-title {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.platform-subtitle {
+  font-size: 11px;
+  color: var(--text-dim);
+  margin-left: 12px;
+}
+
+.platform-totals {
+  display: flex;
+  gap: 12px;
+  align-items: baseline;
+  font-size: 14px;
+}
+
+.holdings-table {
+  font-size: 13px;
+}
+
+.holdings-table th {
+  padding: 10px 16px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  border-bottom: 1px solid var(--border);
+  white-space: nowrap;
+  background: var(--surface);
+}
+
+.holdings-table td {
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--border);
+  vertical-align: top;
+}
+
+.holdings-table tbody tr:last-child td { border-bottom: none; }
+
+.holdings-table tbody tr:hover { background: var(--surface-2); }
+
+.holding-row.flagged { background: rgba(240, 180, 41, 0.04); }
+
+.holding-ticker {
+  font-weight: 700;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--text);
+}
+
+.holding-name {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+
+.holding-source {
+  font-size: 10px;
+  margin-top: 2px;
+}
+
+.nav-label {
+  font-size: 10px;
+  color: var(--text-dim);
+  font-weight: 400;
+}
+
+.text-small { font-size: 11px; opacity: 0.8; }
+
+/* CoinGecko attribution */
+.coingecko-attribution {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 11px;
+  color: var(--text-dim);
+  margin-left: 14px;
+  font-weight: 400;
+  text-transform: none;
+  letter-spacing: 0;
+}
+.coingecko-attribution a {
+  color: var(--text-muted);
+  text-decoration: none;
+}
+.coingecko-attribution a:hover { color: var(--accent); text-decoration: underline; }
+.coingecko-logo {
+  width: 14px;
+  height: 14px;
+  vertical-align: middle;
+}
+
+/* Cache / daily-limit warning banner */
+.crypto-cache-warning {
+  padding: 7px 20px;
+  font-size: 12px;
+  color: #b8860b;
+  background: rgba(240, 180, 41, 0.08);
+  border-bottom: 1px solid rgba(240, 180, 41, 0.2);
+}
+
+/* Cooldown toast (appears below header, dismisses after 4s) */
+.crypto-cooldown-msg {
+  padding: 7px 20px;
+  font-size: 12px;
+  color: var(--text-muted);
+  background: var(--surface-2);
+  border-bottom: 1px solid var(--border);
+}

@@ -1,0 +1,191 @@
+.tp-panel {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 18px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* ── Header row ─────────────────────────────────────────────────────────── */
+.tp-panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+/* ── Intraday direction bar ─────────────────────────────────────────────── */
+.tp-direction-wrap {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.tp-direction-label {
+  font-size: 10px;
+  color: var(--text-dim);
+  white-space: nowrap;
+}
+
+.tp-direction-track {
+  position: relative;
+  width: 80px;
+  height: 6px;
+  border-radius: 3px;
+  overflow: visible;
+  display: flex;
+}
+
+.tp-direction-fill {
+  height: 100%;
+}
+
+.tp-direction-fill--neg {
+  background: linear-gradient(90deg, rgba(255,77,77,0.08) 0%, rgba(255,77,77,0.25) 100%);
+  border-radius: 3px 0 0 3px;
+}
+
+.tp-direction-fill--pos {
+  background: linear-gradient(90deg, rgba(0,200,150,0.25) 0%, rgba(0,200,150,0.08) 100%);
+  border-radius: 0 3px 3px 0;
+}
+
+.tp-direction-midline {
+  position: absolute;
+  left: 50%;
+  top: -1px;
+  bottom: -1px;
+  width: 1px;
+  background: var(--border-light);
+}
+
+.tp-direction-marker {
+  position: absolute;
+  top: -2px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  transform: translateX(-50%);
+  border: 2px solid var(--surface);
+  z-index: 1;
+}
+
+.tp-direction-marker--pos { background: var(--green); }
+.tp-direction-marker--neg { background: var(--red); }
+
+/* ── Main total ─────────────────────────────────────────────────────────── */
+.tp-total {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+}
+
+.tp-total-eur {
+  font-size: 30px;
+  font-weight: 700;
+  font-family: var(--font-mono);
+  line-height: 1;
+}
+
+.tp-total-pct {
+  font-size: 15px;
+  font-family: var(--font-mono);
+  font-weight: 500;
+  opacity: 0.8;
+}
+
+.tp-total--pos .tp-total-eur,
+.tp-total--pos .tp-total-pct { color: var(--green); }
+
+.tp-total--neg .tp-total-eur,
+.tp-total--neg .tp-total-pct { color: var(--red); }
+
+/* ── Platform breakdown ─────────────────────────────────────────────────── */
+.tp-platforms {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding-top: 2px;
+  border-top: 1px solid var(--border);
+}
+
+.tp-platform-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+}
+
+.tp-platform-name {
+  color: var(--text-dim);
+  font-weight: 600;
+  width: 62px;
+  flex-shrink: 0;
+}
+
+.tp-platform-eur {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 13px;
+}
+
+.tp-platform-pct {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  opacity: 0.8;
+}
+
+.tp-pos { color: var(--green); }
+.tp-neg { color: var(--red); }
+
+/* ── Best / worst movers ────────────────────────────────────────────────── */
+.tp-movers {
+  display: flex;
+  gap: 8px;
+  border-top: 1px solid var(--border);
+  padding-top: 2px;
+}
+
+.tp-mover {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 8px 10px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+}
+
+.tp-mover--best  { background: var(--green-dim); border-color: rgba(0,200,150,0.2); }
+.tp-mover--worst { background: var(--red-dim);   border-color: rgba(255,77,77,0.2); }
+
+.tp-mover-label {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+}
+
+.tp-mover-ticker {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.tp-mover-eur {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+/* ── Footer (timestamp) ─────────────────────────────────────────────────── */
+.tp-footer {
+  display: flex;
+  justify-content: flex-end;
+  border-top: 1px solid var(--border);
+  padding-top: 8px;
+}

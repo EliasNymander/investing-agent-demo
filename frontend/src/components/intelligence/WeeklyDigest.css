@@ -1,0 +1,62 @@
+.weekly-digest {
+  margin: 16px 24px;
+  padding: 14px 18px;
+  background: var(--blue-dim);
+  border: 1px solid rgba(77, 166, 255, 0.3);
+  border-radius: var(--radius-lg);
+  border-left: 3px solid var(--blue);
+}
+
+.weekly-digest-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.weekly-digest-header-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.weekly-digest-badge {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--blue);
+  background: rgba(77, 166, 255, 0.18);
+  padding: 2px 7px;
+  border-radius: var(--radius-sm);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.weekly-digest-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.weekly-digest-toggle {
+  font-size: 11px;
+  color: var(--text-dim);
+  cursor: pointer;
+  background: none;
+  border: none;
+  white-space: nowrap;
+  flex-shrink: 0;
+  padding: 0;
+  font-family: var(--font);
+  transition: color 0.12s;
+}
+
+.weekly-digest-toggle:hover { color: var(--text); }
+
+.weekly-digest-body {
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.7;
+  margin-top: 10px;
+}

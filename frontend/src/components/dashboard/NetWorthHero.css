@@ -1,0 +1,208 @@
+/* ── Hero wrapper ────────────────────────────────────────────────────────── */
+.nw-hero {
+  margin: 0 32px 24px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-top: 3px solid var(--accent);
+  border-radius: var(--radius-lg);
+  background-image: linear-gradient(135deg, var(--surface) 60%, rgba(0, 200, 150, 0.04) 100%);
+  padding: 24px 28px 20px;
+}
+
+[data-theme="light"] .nw-hero {
+  background-image: linear-gradient(135deg, var(--surface) 60%, rgba(0, 168, 118, 0.05) 100%);
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.06);
+}
+
+/* ── Hero body — flex row ────────────────────────────────────────────────── */
+.nw-hero-body {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+/* ── Left: label, total, breakdown ─────────────────────────────────────── */
+.nw-main {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.nw-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+}
+
+.nw-total {
+  font-size: 48px;
+  font-weight: 800;
+  font-family: var(--font-mono);
+  color: var(--text);
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+
+/* ── Platform breakdown ─────────────────────────────────────────────────── */
+.nw-platforms {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 4px;
+}
+
+.nw-platform-item {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 12px;
+}
+
+.nw-platform-name {
+  color: var(--text-dim);
+  font-weight: 500;
+}
+
+.nw-platform-value {
+  font-family: var(--font-mono);
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+.nw-platform-sep {
+  color: var(--border-light);
+  font-size: 14px;
+  line-height: 1;
+}
+
+/* ── Right: today's change + refresh ────────────────────────────────────── */
+.nw-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 12px;
+}
+
+.nw-change {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.nw-change-indicator {
+  font-size: 20px;
+  line-height: 1;
+}
+
+.nw-change--pos .nw-change-indicator { color: var(--green); }
+.nw-change--neg .nw-change-indicator { color: var(--red); }
+
+.nw-change-figures {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 2px;
+}
+
+.nw-change-eur {
+  font-size: 28px;
+  font-weight: 700;
+  font-family: var(--font-mono);
+  line-height: 1;
+}
+
+.nw-change--pos .nw-change-eur { color: var(--green); }
+.nw-change--neg .nw-change-eur { color: var(--red); }
+
+.nw-change-pct {
+  font-size: 13px;
+  font-family: var(--font-mono);
+  font-weight: 500;
+}
+
+.nw-change--pos .nw-change-pct { color: var(--green); opacity: 0.8; }
+.nw-change--neg .nw-change-pct { color: var(--red);   opacity: 0.8; }
+
+/* ── Refresh all button ─────────────────────────────────────────────────── */
+.nw-refresh-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-dim);
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  font-family: var(--font);
+  transition: color 0.12s, border-color 0.12s, background 0.12s;
+}
+
+.nw-refresh-btn:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+  background: var(--green-dim);
+}
+
+.nw-refresh-icon {
+  font-size: 14px;
+  display: inline-block;
+  transition: transform 0.3s ease;
+}
+
+.nw-refresh-btn--spinning .nw-refresh-icon {
+  animation: nw-spin 0.8s linear infinite;
+}
+
+@keyframes nw-spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+/* ── Mobile responsive ──────────────────────────────────────────────────── */
+@media (max-width: 640px) {
+  .nw-hero {
+    margin: 0 16px 20px;
+    padding: 18px 18px 16px;
+  }
+
+  .nw-total {
+    font-size: 36px;
+  }
+
+  .nw-change-eur {
+    font-size: 22px;
+  }
+
+  .nw-hero-body {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .nw-right {
+    align-items: flex-start;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .nw-change-figures {
+    align-items: flex-start;
+  }
+
+  .nw-platforms {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+  }
+
+  .nw-platform-sep { display: none; }
+}

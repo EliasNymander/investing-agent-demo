@@ -1,0 +1,77 @@
+export const mockOpportunities = [
+  {
+    id: 'opp-001',
+    ticker: 'SPOT',
+    name: 'Spotify Technology S.A.',
+    exchange: 'NYSE',
+    currentPrice: 520.00,
+    targetPrice: 610.00,
+    upside: '+17.3%',
+    timeHorizon: '9–12 months',
+    risk: 'MEDIUM',
+    thesis:
+      'Spotify\'s margin story has shifted from "growth at any cost" to genuine operating leverage — gross margin has expanded steadily as the marketplace/ads business, audiobooks, and price increases flow through. Premium subscriber growth remains healthy even after multiple price hikes, suggesting real pricing power. Audiobooks and podcast advertising are increasingly diversifying revenue away from pure music-label economics, where Spotify has structurally thin margins. Nordic-founded and widely recognized, it\'s a natural adjacent idea to the portfolio\'s existing consumer/tech exposure without duplicating any current holding.',
+    catalysts: [
+      'Continued gross margin expansion from marketplace/ads and audiobooks',
+      'Price increases across major markets sticking with low churn',
+      'Audiobooks monetization ramp reducing reliance on music-label economics',
+    ],
+    risks: [
+      'Full removal of Apple/Google platform fee frictions could invite new competition',
+      'Music label licensing renegotiations could pressure content costs',
+      'Slower-than-expected premium subscriber growth in saturated markets',
+    ],
+    relevance: 'Nordic-founded consumer platform name — offers streaming/subscription-economy exposure adjacent to the portfolio\'s ETF and Nordic industrial holdings without overlapping any of them.',
+    generatedAt: '2026-05-12T23:00:00Z',
+  },
+  {
+    id: 'opp-002',
+    ticker: 'EQNR',
+    name: 'Equinor ASA',
+    exchange: 'Oslo Børs',
+    currentPrice: 285.00,
+    targetPrice: 335.00,
+    upside: '+17.5%',
+    timeHorizon: '12 months',
+    risk: 'MEDIUM',
+    thesis:
+      'Equinor combines a cash-generative North Sea oil and gas base with a growing energy-transition pipeline in offshore wind and carbon capture. High capital returns via dividends and buybacks are underpinned by strong European gas prices, while the transition assets provide long-dated optionality without requiring the balance sheet to bet the company on them. The state ownership stake (67%) provides an unusual degree of balance-sheet stability among energy majors.',
+    catalysts: [
+      'Continued high capital returns via dividends and buybacks funded by North Sea cash flow',
+      'Offshore wind and carbon-capture project pipeline maturing toward FID-ready status',
+      'Firm European natural gas prices supporting near-term earnings',
+    ],
+    risks: [
+      'Oil and gas price volatility remains the dominant swing factor for earnings',
+      'Energy-transition capex could compress near-term free cash flow and dividend coverage',
+      'Regulatory and political risk tied to Norwegian state ownership and EU energy policy',
+    ],
+    relevance: 'Adds Nordic energy-sector and dividend income exposure with an energy-transition angle — complements the portfolio\'s industrial and pharma holdings without duplicating existing ETF exposure.',
+    generatedAt: '2026-05-12T23:00:00Z',
+  },
+  {
+    id: 'opp-003',
+    ticker: 'KNEBV',
+    name: 'KONE Oyj',
+    exchange: 'Nasdaq Helsinki',
+    currentPrice: 52.00,
+    targetPrice: 60.00,
+    upside: '+15.4%',
+    timeHorizon: '12–18 months',
+    risk: 'MEDIUM',
+    thesis:
+      'KONE is a steady industrial compounder — the majority of revenue comes from recurring maintenance and modernization contracts on its large installed base of elevators and escalators, which smooths out the cyclicality of new-equipment sales. The main overhang has been weakness in Chinese new-equipment orders tied to the property market; that headwind appears to be stabilizing rather than worsening, and services mix continues to shift the earnings base toward higher-margin recurring revenue.',
+    catalysts: [
+      'Services and maintenance revenue continuing to grow as a share of total sales, lifting margins',
+      'Stabilization in Chinese new-equipment orders removing a persistent overhang',
+      'Elevator modernization demand in mature markets (EU, US) as building stock ages',
+    ],
+    risks: [
+      'Continued weakness in Chinese property/construction pressuring new-equipment orders',
+      'Input cost and logistics inflation compressing new-equipment margins',
+      'Currency translation risk given a global revenue base reported in EUR',
+    ],
+    relevance: 'Finnish industrial compounder with recurring service revenue — a lower-beta complement to the portfolio\'s Nordic large-caps and existing global ETF exposure.',
+    generatedAt: '2026-05-12T23:00:00Z',
+  },
+];

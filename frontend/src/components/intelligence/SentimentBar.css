@@ -1,0 +1,74 @@
+.sentiment-bar {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 12px 24px;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  flex-wrap: wrap;
+}
+
+.sentiment-bar-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  white-space: nowrap;
+}
+
+.sentiment-pills {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.sentiment-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: 20px;
+}
+
+.sentiment-pill--bullish { background: var(--green-dim); color: var(--green); }
+.sentiment-pill--bearish { background: var(--red-dim);   color: var(--red); }
+.sentiment-pill--neutral { background: var(--surface-2); color: var(--text-muted); }
+
+.sentiment-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.sentiment-pill--bullish .sentiment-dot { background: var(--green); }
+.sentiment-pill--bearish .sentiment-dot { background: var(--red); }
+.sentiment-pill--neutral .sentiment-dot { background: var(--text-dim); }
+
+.sentiment-track {
+  flex: 1;
+  min-width: 120px;
+  height: 4px;
+  border-radius: 2px;
+  background: var(--border);
+  display: flex;
+  overflow: hidden;
+}
+
+.sentiment-fill {
+  height: 100%;
+  transition: width 0.4s ease;
+}
+
+.sentiment-fill--bullish { background: var(--green); }
+.sentiment-fill--bearish { background: var(--red); }
+.sentiment-fill--neutral { background: var(--text-dim); }
+
+.sentiment-bar-count {
+  font-size: 11px;
+  color: var(--text-dim);
+  white-space: nowrap;
+}

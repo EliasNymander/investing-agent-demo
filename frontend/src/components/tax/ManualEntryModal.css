@@ -1,0 +1,36 @@
+.manual-entry-modal {
+  width: 640px;
+  max-width: 95vw;
+}
+
+.me-row {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.me-row .modal-field {
+  flex: 1;
+  min-width: 140px;
+}
+
+.me-field-grow  { flex: 2; }
+.me-field-short { flex: 1; }
+
+.me-gain-preview {
+  font-size: 13px;
+  font-weight: 600;
+  padding: 8px 12px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+  background: var(--surface-2);
+  color: var(--text-muted);
+  margin-bottom: 4px;
+}
+
+.me-gain--pos { background: var(--green-dim); color: var(--green); border-color: rgba(0,200,150,0.3); }
+.me-gain--neg { background: var(--red-dim);   color: var(--red);   border-color: rgba(255,77,77,0.3); }
+
+.wl-input--error {
+  border-color: var(--red) !important;
+}

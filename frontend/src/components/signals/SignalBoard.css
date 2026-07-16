@@ -1,0 +1,59 @@
+.signal-filters {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.signal-filter-btn {
+  padding: 6px 14px;
+  border-radius: var(--radius);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--text-muted);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.15s;
+}
+
+.signal-filter-btn:hover {
+  color: var(--text);
+  border-color: var(--border-light);
+}
+
+.signal-filter-btn.active {
+  color: var(--text);
+  background: var(--surface-2);
+  border-color: var(--accent);
+}
+
+.signal-filter-count {
+  background: var(--surface-2);
+  border-radius: 10px;
+  padding: 1px 6px;
+  font-size: 10px;
+}
+
+.signal-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+  gap: 16px;
+}
+
+.signal-age {
+  font-size: 11px;
+  color: var(--text-muted);
+  margin-top: -12px;
+  margin-bottom: 16px;
+}
+
+.signal-age--stale {
+  color: #f59e0b;
+}
+
+.signal-age-icon {
+  margin-right: 2px;
+}

@@ -1,0 +1,238 @@
+.pa-panel {
+  padding: 0 32px 48px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* ── Top bar ─────────────────────────────────────────────────────────────── */
+.pa-panel-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 4px;
+}
+
+.pa-panel-counts {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+}
+
+.pa-count-total   { color: var(--text-muted); font-weight: 600; }
+.pa-count-triggered { color: var(--red); font-weight: 700; }
+
+.pa-add-btn {
+  padding: 7px 16px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #000;
+  background: var(--accent);
+  border: none;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  font-family: var(--font);
+  transition: opacity 0.12s;
+}
+
+.pa-add-btn:hover { opacity: 0.85; }
+
+/* ── Sections ────────────────────────────────────────────────────────────── */
+.pa-section { display: flex; flex-direction: column; gap: 8px; }
+
+.pa-section-header {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  padding-bottom: 2px;
+  border-bottom: 1px solid var(--border);
+}
+
+.pa-section-header--triggered {
+  color: var(--red);
+  border-bottom-color: rgba(255, 77, 77, 0.3);
+}
+
+/* ── Grid ────────────────────────────────────────────────────────────────── */
+.pa-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 10px;
+}
+
+/* ── Alert card ──────────────────────────────────────────────────────────── */
+.pa-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  border-left: 3px solid var(--border-light);
+  padding: 14px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  transition: background 0.12s, border-left-color 0.12s;
+}
+
+.pa-card:hover { background: var(--surface-2); }
+
+.pa-card--triggered {
+  border-left-color: var(--red);
+  background: rgba(255, 77, 77, 0.04);
+}
+
+/* ── Card top row ────────────────────────────────────────────────────────── */
+.pa-card-top {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.pa-type-badge {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  padding: 2px 6px;
+  border-radius: var(--radius-sm);
+  background: var(--surface-2);
+  color: var(--text-dim);
+  border: 1px solid var(--border);
+  flex-shrink: 0;
+}
+
+.pa-ticker {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.pa-name {
+  font-size: 12px;
+  color: var(--text-muted);
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.pa-triggered-badge {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: var(--red);
+  background: var(--red-dim);
+  border: 1px solid rgba(255, 77, 77, 0.3);
+  border-radius: var(--radius-sm);
+  padding: 2px 7px;
+  flex-shrink: 0;
+}
+
+/* ── Card action buttons ─────────────────────────────────────────────────── */
+.pa-card-actions {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-left: auto;
+}
+
+.pa-action-btn {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-dim);
+  background: none;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 3px 8px;
+  cursor: pointer;
+  font-family: var(--font);
+  transition: all 0.1s;
+}
+
+.pa-action-btn:hover { color: var(--text); border-color: var(--border-light); }
+
+.pa-dismiss-btn:hover {
+  color: var(--yellow);
+  border-color: var(--yellow);
+  background: rgba(240, 180, 41, 0.1);
+}
+
+.pa-delete-btn:hover {
+  color: var(--red);
+  border-color: var(--red);
+  background: var(--red-dim);
+}
+
+/* ── Condition label ─────────────────────────────────────────────────────── */
+.pa-condition {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text);
+}
+
+/* ── Status line ─────────────────────────────────────────────────────────── */
+.pa-status {
+  font-size: 12px;
+  font-family: var(--font-mono);
+}
+
+.pa-status--triggered { color: var(--red); font-weight: 600; }
+.pa-status--pending   { color: var(--text-dim); }
+.pa-status--unknown   { color: var(--text-dim); font-style: italic; }
+
+/* ── Footer ──────────────────────────────────────────────────────────────── */
+.pa-card-footer {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 2px;
+}
+
+.pa-delivery { display: flex; gap: 4px; }
+
+.pa-chip {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  padding: 2px 6px;
+  border-radius: var(--radius-sm);
+}
+
+.pa-chip--app   { background: var(--surface-2); color: var(--text-dim); border: 1px solid var(--border); }
+.pa-chip--email { background: rgba(77, 166, 255, 0.1); color: #4da6ff; border: 1px solid rgba(77, 166, 255, 0.3); }
+
+.pa-notes {
+  font-size: 11px;
+  color: var(--text-dim);
+  font-style: italic;
+  flex: 1;
+}
+
+/* ── Empty state ─────────────────────────────────────────────────────────── */
+.pa-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: 80px 32px;
+  text-align: center;
+}
+
+.pa-empty-icon  { font-size: 36px; color: var(--text-dim); }
+.pa-empty-title { font-size: 15px; font-weight: 700; color: var(--text); }
+.pa-empty-sub   { font-size: 13px; color: var(--text-muted); max-width: 360px; line-height: 1.5; }
+
+/* ── Phase 2 note ────────────────────────────────────────────────────────── */
+.pa-phase2-note {
+  font-size: 11px;
+  color: var(--text-dim);
+  font-style: italic;
+  text-align: center;
+  padding: 0 32px;
+}
