@@ -1,0 +1,1 @@
+{"status":"error","message":"No daily data available yet — trigger a job first via POST /api/scheduler/trigger?type=daily"}
