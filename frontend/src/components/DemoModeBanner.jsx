@@ -1,28 +1,17 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState } from 'react';
 import { DEMO_MODE } from '../api/demoFetch.js';
 
 export default function DemoModeBanner() {
-  const [isDemoMode, setIsDemoMode] = useState(false);
   const [loading, setLoading] = useState(false);
-
-  const fetchStatus = useCallback(() => {
-    fetch('/api/demo/status')
-      .then((r) => r.json())
-      .then((data) => setIsDemoMode(data.isDemoMode))
-      .catch(() => {});
-  }, []);
-
-  useEffect(() => { fetchStatus(); }, [fetchStatus]);
 
   const handleExit = () => {
     setLoading(true);
     fetch('/api/demo/disable', { method: 'POST' })
-      .then(() => { setIsDemoMode(false); })
       .catch(() => {})
       .finally(() => setLoading(false));
   };
 
-  if (!isDemoMode) return null;
+  if (!DEMO_MODE) return null;
 
   return (
     <div style={{
