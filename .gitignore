@@ -1,9 +1,9 @@
 node_modules/
 .env
-user_config.json
-journal.json
-watchlist.json
-price-alerts.json
+/user_config.json
+/journal.json
+/watchlist.json
+/price-alerts.json
 backend/generated/
 backend/cache/
 backend/data/user-holdings.json
