@@ -4,6 +4,7 @@ import { fileURLToPath } from 'url';
 import { config } from '../config.js';
 import { mockPrices, fxRates } from '../data/mock-prices.js';
 import { getCryptoIds } from '../config/holdings.js';
+import { isDemoMode } from '../config/demo-mode.js';
 
 const __dir = dirname(fileURLToPath(import.meta.url));
 const CACHE_DIR = join(__dir, '..', 'cache');
@@ -125,6 +126,17 @@ async function fetchWithRetry() {
  * dataSource: 'live' | 'stale_cache' | 'mock'
  */
 export async function getCryptoPrices() {
+  // Demo mode never hits the live API — same gate as tax-service/holdings.
+  if (isDemoMode()) {
+    return {
+      prices: buildMockPrices(),
+      dataSource: 'mock',
+      cacheAgeMin: null,
+      warning: null,
+      dailyLimitReached: false,
+    };
+  }
+
   // 1. Warm in-memory cache hit
   if (isValid(memCache)) {
     return {
