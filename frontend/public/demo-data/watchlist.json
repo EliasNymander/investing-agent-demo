@@ -1,0 +1,54 @@
+{
+  "status": "ok",
+  "data": [
+    {
+      "id": "wl-spot-001",
+      "ticker": "SPOT",
+      "name": "Spotify Technology S.A.",
+      "exchange": "NYSE",
+      "assetClass": "stock",
+      "currency": "USD",
+      "addedAt": "2026-02-01T09:00:00.000Z",
+      "addedPrice": 520.00,
+      "notes": "",
+      "alerts": [],
+      "currentPrice": 520.00,
+      "dailyPct": 0,
+      "priceSinceAdded": 0,
+      "hasTriggeredAlerts": false
+    },
+    {
+      "id": "wl-eqnr-002",
+      "ticker": "EQNR",
+      "name": "Equinor ASA",
+      "exchange": "Oslo Børs",
+      "assetClass": "stock",
+      "currency": "NOK",
+      "addedAt": "2026-02-01T09:00:00.000Z",
+      "addedPrice": 285.00,
+      "notes": "",
+      "alerts": [],
+      "currentPrice": 285.00,
+      "dailyPct": 0,
+      "priceSinceAdded": 0,
+      "hasTriggeredAlerts": false
+    },
+    {
+      "id": "wl-knebv-003",
+      "ticker": "KNEBV",
+      "name": "KONE Oyj",
+      "exchange": "Nasdaq Helsinki",
+      "assetClass": "stock",
+      "currency": "EUR",
+      "addedAt": "2026-02-01T09:00:00.000Z",
+      "addedPrice": 52.00,
+      "notes": "",
+      "alerts": [],
+      "currentPrice": 52.00,
+      "dailyPct": 0,
+      "priceSinceAdded": 0,
+      "hasTriggeredAlerts": false
+    }
+  ],
+  "triggeredCount": 0
+}

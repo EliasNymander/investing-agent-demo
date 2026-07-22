@@ -1,0 +1,15 @@
+{
+  "status": "ok",
+  "data": [
+    {
+      "id": "acc_1",
+      "name": "Personal Portfolio",
+      "description": "",
+      "createdAt": "2026-01-15T09:00:00.000Z",
+      "lastUpdated": "2026-01-15T09:00:00.000Z",
+      "color": "#4CAF50",
+      "holdingCount": 11,
+      "platforms": ["nordnet", "nordea", "kvarnx"]
+    }
+  ]
+}

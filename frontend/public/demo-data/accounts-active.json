@@ -1,0 +1,34 @@
+{
+  "status": "ok",
+  "data": {
+    "id": "acc_1",
+    "name": "Personal Portfolio",
+    "description": "",
+    "createdAt": "2026-01-15T09:00:00.000Z",
+    "lastUpdated": "2026-01-15T09:00:00.000Z",
+    "color": "#4CAF50",
+    "holdingCount": 11,
+    "platforms": ["nordnet", "nordea", "kvarnx"],
+    "holdings": {
+      "displayCurrency": "EUR",
+      "nordnet": [
+        {"ticker":"IWDA","name":"iShares Core MSCI World UCITS ETF","assetClass":"etf","avgCost":108.5,"currency":"EUR","platform":"Nordnet","units":40,"purchaseDate":null},
+        {"ticker":"NOVO-B","name":"Novo Nordisk B","assetClass":"stock","avgCost":620,"currency":"DKK","platform":"Nordnet","units":25,"purchaseDate":null},
+        {"ticker":"ASML","name":"ASML Holding","assetClass":"stock","avgCost":890,"currency":"EUR","platform":"Nordnet","units":8,"purchaseDate":null},
+        {"ticker":"VWCE","name":"Vanguard FTSE All-World UCITS ETF","assetClass":"etf","avgCost":118,"currency":"EUR","platform":"Nordnet","units":25,"purchaseDate":null},
+        {"ticker":"VOLV-B","name":"Volvo B","assetClass":"stock","avgCost":265,"currency":"SEK","platform":"Nordnet","units":120,"purchaseDate":null},
+        {"ticker":"SHEL","name":"Shell plc","assetClass":"stock","avgCost":28.5,"currency":"EUR","platform":"Nordnet","units":35,"purchaseDate":null}
+      ],
+      "nordea": [
+        {"ticker":"NORDEA-STABLE","name":"Nordea Stable Return Fund","assetClass":"fund","avgCost":18.9,"currency":"EUR","platform":"Nordea","navDate":"2026-05-09","benchmark":"50% MSCI Nordic / 50% Euro Aggregate Bond Index","units":210.4521,"purchaseDate":null},
+        {"ticker":"NORDEA-NORDIC-SC","name":"Nordea Nordic Small Cap Fund","assetClass":"fund","avgCost":42.1,"currency":"EUR","platform":"Nordea","navDate":"2026-05-09","benchmark":"VINX Small Cap Cap GI","units":95.7834,"purchaseDate":null}
+      ],
+      "kvarnx": [
+        {"ticker":"BTC","name":"Bitcoin","assetClass":"crypto","avgCost":52000,"currency":"EUR","platform":"KvarnX","dataSource":"CoinGecko (mock)","units":0.15,"purchaseDate":null,"coingeckoId":"bitcoin"},
+        {"ticker":"ADA","name":"Cardano","assetClass":"crypto","avgCost":0.42,"currency":"EUR","platform":"KvarnX","dataSource":"CoinGecko (mock)","units":3000,"purchaseDate":null,"coingeckoId":"cardano"},
+        {"ticker":"DOT","name":"Polkadot","assetClass":"crypto","avgCost":5.8,"currency":"EUR","platform":"KvarnX","dataSource":"CoinGecko (mock)","units":250,"purchaseDate":null,"coingeckoId":"polkadot"}
+      ],
+      "lastUpdated": null
+    }
+  }
+}
