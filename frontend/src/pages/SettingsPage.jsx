@@ -4,6 +4,7 @@ import SetupWizard from '../components/wizard/SetupWizard.jsx';
 import AccountsCard from '../components/settings/AccountsCard.jsx';
 import { useActiveAccount } from '../hooks/useAccounts.js';
 import { useConfig } from '../context/ConfigContext.jsx';
+import { DEMO_MODE } from '../api/demoFetch.js';
 
 export default function SettingsPage() {
   const { config } = useConfig();
@@ -139,16 +140,18 @@ export default function SettingsPage() {
             Try the agent with sample data before entering your real investments.
             Enable demo mode to see a fully populated portfolio example.
           </p>
-          <button
-            className={`wizard-btn ${isDemoMode ? 'wizard-btn--back' : 'wizard-btn--next'}`}
-            onClick={isDemoMode ? disableDemoMode : enableDemoMode}
-            disabled={demoLoading}
-            style={{ fontSize: 13 }}
-          >
-            {demoLoading
-              ? (isDemoMode ? 'Exiting…' : 'Enabling…')
-              : (isDemoMode ? 'Exit Demo Mode' : 'Enable Demo Mode')}
-          </button>
+          {!DEMO_MODE && (
+            <button
+              className={`wizard-btn ${isDemoMode ? 'wizard-btn--back' : 'wizard-btn--next'}`}
+              onClick={isDemoMode ? disableDemoMode : enableDemoMode}
+              disabled={demoLoading}
+              style={{ fontSize: 13 }}
+            >
+              {demoLoading
+                ? (isDemoMode ? 'Exiting…' : 'Enabling…')
+                : (isDemoMode ? 'Exit Demo Mode' : 'Enable Demo Mode')}
+            </button>
+          )}
 
           {/* Note shown only when demo mode is active */}
           {isDemoMode && (
@@ -174,13 +177,19 @@ export default function SettingsPage() {
               ? `${totalHoldings} positions configured across ${platformList}.`
               : 'No holdings configured yet.'}
           </p>
-          <button
-            className="wizard-btn wizard-btn--next"
-            onClick={() => setShowWizard(true)}
-            style={{ fontSize: 13 }}
-          >
-            {totalHoldings > 0 ? 'Edit Holdings & Settings' : 'Run Setup Wizard'}
-          </button>
+          {DEMO_MODE ? (
+            <p style={{ color: 'var(--text-tertiary)', fontSize: 12, fontStyle: 'italic' }}>
+              Holdings editing is disabled in this demo.
+            </p>
+          ) : (
+            <button
+              className="wizard-btn wizard-btn--next"
+              onClick={() => setShowWizard(true)}
+              style={{ fontSize: 13 }}
+            >
+              {totalHoldings > 0 ? 'Edit Holdings & Settings' : 'Run Setup Wizard'}
+            </button>
+          )}
         </div>
 
         {/* ── Report Schedule card ───────────────────────────────────────── */}

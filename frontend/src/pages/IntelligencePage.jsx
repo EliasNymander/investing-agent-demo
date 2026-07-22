@@ -6,6 +6,7 @@ import ArticleCard from '../components/intelligence/ArticleCard.jsx';
 import { useIntelligence } from '../hooks/useIntelligence.js';
 import { useActiveAccount, useTrackedAssets } from '../hooks/useAccounts.js';
 import { saveTrackedAssetsApi } from '../api/accounts.js';
+import { DEMO_MODE } from '../api/demoFetch.js';
 import './IntelligencePage.css';
 
 const TABS = [
@@ -176,11 +177,13 @@ export default function IntelligencePage() {
           {trackedAssets.map((t) => (
             <span key={t} className="intel-tracked-chip">
               {t}
-              <button
-                className="intel-tracked-remove"
-                onClick={() => handleRemoveTracked(t)}
-                title={`Stop tracking ${t}`}
-              >×</button>
+              {!DEMO_MODE && (
+                <button
+                  className="intel-tracked-remove"
+                  onClick={() => handleRemoveTracked(t)}
+                  title={`Stop tracking ${t}`}
+                >×</button>
+              )}
             </span>
           ))}
         </div>
@@ -277,7 +280,7 @@ export default function IntelligencePage() {
         )}
 
         {/* Track asset button / inline form */}
-        {trackOpen ? (
+        {!DEMO_MODE && (trackOpen ? (
           <div className="intel-track-form">
             <input
               className="intel-track-input"
@@ -295,7 +298,7 @@ export default function IntelligencePage() {
           </div>
         ) : (
           <button className="intel-track-btn" onClick={() => setTrackOpen(true)}>+ Track asset</button>
-        )}
+        ))}
       </div>
 
       {/* Active asset chip indicator */}

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Header from '../components/layout/Header.jsx';
 import { useReports } from '../hooks/useReports.js';
+import { DEMO_MODE } from '../api/demoFetch.js';
 import './ReportsPage.css';
 
 const CONFIDENCE_COLOR = { high: 'var(--green)', medium: 'var(--yellow)', low: 'var(--red)' };
@@ -52,22 +53,24 @@ export default function ReportsPage() {
           <p style={{ color: 'var(--text-secondary)', marginBottom: 24, lineHeight: 1.6 }}>
             Generate a weekly AI portfolio review with signals, opportunities, and risk analysis.
           </p>
-          <button
-            onClick={() => triggerReport(setGenerating, setTriggerError, mutate)}
-            disabled={generating}
-            style={{
-              padding: '10px 24px',
-              background: 'var(--accent)',
-              color: '#fff',
-              border: 'none',
-              borderRadius: 8,
-              fontWeight: 600,
-              cursor: generating ? 'not-allowed' : 'pointer',
-              opacity: generating ? 0.7 : 1,
-            }}
-          >
-            {generating ? 'Generating…' : 'Generate Now'}
-          </button>
+          {!DEMO_MODE && (
+            <button
+              onClick={() => triggerReport(setGenerating, setTriggerError, mutate)}
+              disabled={generating}
+              style={{
+                padding: '10px 24px',
+                background: 'var(--accent)',
+                color: '#fff',
+                border: 'none',
+                borderRadius: 8,
+                fontWeight: 600,
+                cursor: generating ? 'not-allowed' : 'pointer',
+                opacity: generating ? 0.7 : 1,
+              }}
+            >
+              {generating ? 'Generating…' : 'Generate Now'}
+            </button>
+          )}
           {triggerError && (
             <p style={{ marginTop: 12, color: 'var(--red)', fontSize: 13 }}>{triggerError}</p>
           )}
@@ -179,26 +182,28 @@ export default function ReportsPage() {
         )}
 
         {/* Regenerate */}
-        <div style={{ paddingBottom: 32 }}>
-          <button
-            onClick={() => triggerReport(setGenerating, setTriggerError, mutate)}
-            disabled={generating}
-            style={{
-              padding: '8px 18px',
-              background: 'transparent',
-              border: '1px solid var(--border)',
-              borderRadius: 6,
-              color: 'var(--text-secondary)',
-              cursor: generating ? 'not-allowed' : 'pointer',
-              fontSize: 13,
-            }}
-          >
-            {generating ? 'Generating…' : 'Regenerate Report'}
-          </button>
-          {triggerError && (
-            <p style={{ marginTop: 8, color: 'var(--red)', fontSize: 13 }}>{triggerError}</p>
-          )}
-        </div>
+        {!DEMO_MODE && (
+          <div style={{ paddingBottom: 32 }}>
+            <button
+              onClick={() => triggerReport(setGenerating, setTriggerError, mutate)}
+              disabled={generating}
+              style={{
+                padding: '8px 18px',
+                background: 'transparent',
+                border: '1px solid var(--border)',
+                borderRadius: 6,
+                color: 'var(--text-secondary)',
+                cursor: generating ? 'not-allowed' : 'pointer',
+                fontSize: 13,
+              }}
+            >
+              {generating ? 'Generating…' : 'Regenerate Report'}
+            </button>
+            {triggerError && (
+              <p style={{ marginTop: 8, color: 'var(--red)', fontSize: 13 }}>{triggerError}</p>
+            )}
+          </div>
+        )}
 
       </div>
     </div>

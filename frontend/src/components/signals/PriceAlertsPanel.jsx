@@ -2,6 +2,7 @@ import React, { useState, useCallback, useMemo } from 'react';
 import { usePriceAlerts } from '../../hooks/usePriceAlerts.js';
 import { addPriceAlert, updatePriceAlert, deletePriceAlert } from '../../api/priceAlerts.js';
 import AddAlertModal from './AddAlertModal.jsx';
+import { DEMO_MODE } from '../../api/demoFetch.js';
 import './PriceAlertsPanel.css';
 
 // ── Helpers ───────────────────────────────────────────────────────────────────
@@ -82,8 +83,12 @@ function AlertCard({ alert, dismissed, onDismiss, onEdit, onDelete }) {
           {isTriggered && (
             <button className="pa-action-btn pa-dismiss-btn" onClick={() => onDismiss(alert.id)}>Dismiss</button>
           )}
-          <button className="pa-action-btn" onClick={() => onEdit(alert)} title="Edit">✎</button>
-          <button className="pa-action-btn pa-delete-btn" onClick={() => onDelete(alert.id)} title="Delete">✕</button>
+          {!DEMO_MODE && (
+            <>
+              <button className="pa-action-btn" onClick={() => onEdit(alert)} title="Edit">✎</button>
+              <button className="pa-action-btn pa-delete-btn" onClick={() => onDelete(alert.id)} title="Delete">✕</button>
+            </>
+          )}
         </div>
       </div>
 
@@ -153,9 +158,11 @@ export default function PriceAlertsPanel() {
             <span className="pa-count-triggered">· {triggered.length} triggered</span>
           )}
         </div>
-        <button className="pa-add-btn" onClick={() => setModal('new')}>
-          + New Alert
-        </button>
+        {!DEMO_MODE && (
+          <button className="pa-add-btn" onClick={() => setModal('new')}>
+            + New Alert
+          </button>
+        )}
       </div>
 
       {/* Triggered section */}
@@ -208,7 +215,9 @@ export default function PriceAlertsPanel() {
           <div className="pa-empty-sub">
             Set a target like "ASML above €950" or "BTC up 5% today" and get notified when it triggers.
           </div>
-          <button className="pa-add-btn" onClick={() => setModal('new')}>+ Create your first alert</button>
+          {!DEMO_MODE && (
+            <button className="pa-add-btn" onClick={() => setModal('new')}>+ Create your first alert</button>
+          )}
         </div>
       )}
 
@@ -218,7 +227,7 @@ export default function PriceAlertsPanel() {
       </div>
 
       {/* Modal */}
-      {modal && (
+      {!DEMO_MODE && modal && (
         <AddAlertModal
           editAlert={modal === 'new' ? null : modal}
           onClose={() => setModal(null)}

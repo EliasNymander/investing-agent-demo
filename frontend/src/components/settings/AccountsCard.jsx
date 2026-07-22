@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useAccounts, useActiveAccount, useTrackedAssets } from '../../hooks/useAccounts.js';
 import { createAccountApi, deleteAccountApi, renameAccountApi, saveTrackedAssetsApi } from '../../api/accounts.js';
+import { DEMO_MODE } from '../../api/demoFetch.js';
 import './AccountsCard.css';
 
 const COLOR_OPTIONS = ['#4CAF50', '#2196F3', '#9C27B0', '#FF9800', '#F44336', '#00BCD4', '#E91E63', '#607D8B'];
@@ -141,7 +142,9 @@ export default function AccountsCard() {
               <span className="acct-name">{acct.name}</span>
               {isActive && <span className="acct-active-badge">active</span>}
               <div className="acct-row-actions">
-                <button className="acct-icon-btn" onClick={() => startEdit(acct)} title="Rename">✎</button>
+                {!DEMO_MODE && (
+                  <button className="acct-icon-btn" onClick={() => startEdit(acct)} title="Rename">✎</button>
+                )}
                 {isOnlyAccount
                   ? <span className="acct-icon-btn acct-icon-btn--disabled" title="Cannot delete the only account">🗑</span>
                   : <button className="acct-icon-btn acct-icon-btn--danger" onClick={() => startDelete(acct.id)} title="Delete">🗑</button>
@@ -164,15 +167,17 @@ export default function AccountsCard() {
           {trackedAssets.map((t) => (
             <span key={t} className="acct-tracked-chip">
               {t}
-              <button
-                className="acct-tracked-remove"
-                onClick={() => handleRemoveTracked(t)}
-                title={`Stop tracking ${t}`}
-              >×</button>
+              {!DEMO_MODE && (
+                <button
+                  className="acct-tracked-remove"
+                  onClick={() => handleRemoveTracked(t)}
+                  title={`Stop tracking ${t}`}
+                >×</button>
+              )}
             </span>
           ))}
         </div>
-        {trackedOpen ? (
+        {!DEMO_MODE && (trackedOpen ? (
           <div style={{ display: 'flex', gap: 6, alignItems: 'center', marginTop: 8 }}>
             <input
               className="acct-name-input"
@@ -194,10 +199,10 @@ export default function AccountsCard() {
             onClick={() => setTrackedOpen(true)}>
             + Track asset
           </button>
-        )}
+        ))}
       </div>
 
-      {creating ? (
+      {!DEMO_MODE && (creating ? (
         <div className="acct-new-form">
           <input
             className="acct-name-input"
@@ -223,7 +228,7 @@ export default function AccountsCard() {
           onClick={() => { setCreating(true); setError(''); }}>
           + New Account
         </button>
-      )}
+      ))}
     </div>
   );
 }

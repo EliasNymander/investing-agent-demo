@@ -5,6 +5,11 @@ import TypingIndicator from './TypingIndicator.jsx';
 import BudgetWidget from './BudgetWidget.jsx';
 import SuggestedQuestions from './SuggestedQuestions.jsx';
 import { classifyQuery } from '../../utils/queryClassifier.js';
+import { DEMO_MODE } from '../../api/demoFetch.js';
+
+const DEMO_CHAT_MESSAGE =
+  "Live AI chat isn't available in this demo — there's no backend behind it. Take a look at the " +
+  "Dashboard, Signals, and Intelligence pages to see the data the agent would actually reason over.";
 
 // ── Agent API call ─────────────────────────────────────────────────
 
@@ -80,6 +85,7 @@ function formatAgentResult(result) {
 }
 
 async function callAgent(query) {
+  if (DEMO_MODE) return { type: 'normal', content: DEMO_CHAT_MESSAGE };
   try {
     const res = await fetch('/api/agent', {
       method: 'POST',

@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useCallback } from 'react';
+import { DEMO_MODE } from '../api/demoFetch.js';
 
 export default function DemoModeBanner() {
   const [isDemoMode, setIsDemoMode] = useState(false);
@@ -41,22 +42,24 @@ export default function DemoModeBanner() {
       <span>
         <strong>Demo Mode</strong> — showing sample portfolio data. No real holdings are visible.
       </span>
-      <button
-        onClick={handleExit}
-        disabled={loading}
-        style={{
-          background: 'rgba(0,0,0,0.15)',
-          border: 'none',
-          borderRadius: 4,
-          padding: '4px 12px',
-          fontSize: 12,
-          fontWeight: 600,
-          cursor: 'pointer',
-          color: '#1a1a1a',
-        }}
-      >
-        {loading ? 'Exiting…' : 'Exit Demo Mode'}
-      </button>
+      {!DEMO_MODE && (
+        <button
+          onClick={handleExit}
+          disabled={loading}
+          style={{
+            background: 'rgba(0,0,0,0.15)',
+            border: 'none',
+            borderRadius: 4,
+            padding: '4px 12px',
+            fontSize: 12,
+            fontWeight: 600,
+            cursor: 'pointer',
+            color: '#1a1a1a',
+          }}
+        >
+          {loading ? 'Exiting…' : 'Exit Demo Mode'}
+        </button>
+      )}
     </div>
   );
 }
