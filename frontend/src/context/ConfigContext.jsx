@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
+import { demoFetch } from '../api/demoFetch.js';
 
 const ConfigContext = createContext(null);
 
@@ -7,7 +8,7 @@ export function ConfigProvider({ children }) {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch('/api/config')
+    demoFetch('/api/config')
       .then((r) => r.json())
       .then((res) => {
         setConfig(res.data);

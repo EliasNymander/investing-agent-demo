@@ -2,6 +2,7 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { useWatchlist } from '../../hooks/useWatchlist.js';
 import { useSystemStatus } from '../../hooks/useSystemStatus.js';
+import { DEMO_MODE } from '../../api/demoFetch.js';
 import './Sidebar.css';
 
 const VERDICT_LABEL = { live: 'LIVE DATA', partial: 'PARTIAL DATA', mock: 'MOCK DATA' };
@@ -22,11 +23,11 @@ function buildStatusTooltip(status) {
 
 const nav = [
   { to: '/', label: 'Dashboard', icon: '◈' },
-  { to: '/analytics', label: 'Analytics', icon: '◐' },
+  { to: '/analytics', label: 'Analytics', icon: '◐', hideInDemo: true },
   { to: '/signals', label: 'Signals', icon: '◎' },
-  { to: '/watchlist', label: 'Watchlist', icon: '◉', badge: 'watchlist' },
+  { to: '/watchlist', label: 'Watchlist', icon: '◉', badge: 'watchlist', hideInDemo: true },
   { to: '/news', label: 'News Feed', icon: '◫' },
-  { to: '/journal', label: 'Journal', icon: '◑' },
+  { to: '/journal', label: 'Journal', icon: '◑', hideInDemo: true },
   { to: '/intelligence', label: 'Intel Feed', icon: '◆' },
   { to: '/tax', label: 'Tax Summary', icon: '⊞' },
   { to: '/alerts', label: 'Daily Alert', icon: '⊕' },
@@ -38,6 +39,7 @@ export default function Sidebar() {
   const { triggeredCount } = useWatchlist();
   const { status } = useSystemStatus();
   const verdict = status?.verdict ?? 'mock';
+  const visibleNav = DEMO_MODE ? nav.filter((item) => !item.hideInDemo) : nav;
 
   return (
     <nav className="sidebar">
@@ -46,7 +48,7 @@ export default function Sidebar() {
         <span className="sidebar-logo-text">Investing<br />Agent</span>
       </div>
       <ul className="sidebar-nav">
-        {nav.map(({ to, label, icon, badge }) => (
+        {visibleNav.map(({ to, label, icon, badge }) => (
           <li key={to}>
             <NavLink
               to={to}

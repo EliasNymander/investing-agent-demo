@@ -1,7 +1,8 @@
 import useSWR from 'swr';
+import { demoFetch } from '../api/demoFetch.js';
 
 async function fetchWeeklyReport() {
-  const res = await fetch('/api/scheduler/latest?type=weekly');
+  const res = await demoFetch('/api/scheduler/latest?type=weekly');
   if (res.status === 404) return { notGenerated: true };
   if (!res.ok) throw new Error('Failed to load weekly report');
   const json = await res.json();

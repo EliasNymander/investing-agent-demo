@@ -1,8 +1,9 @@
 import useSWR from 'swr';
 import { fetchAccounts, fetchActiveAccount, getTrackedAssetsApi } from '../api/accounts.js';
+import { demoFetch } from '../api/demoFetch.js';
 
 async function fetchDemoStatus() {
-  const r = await fetch('/api/demo/status');
+  const r = await demoFetch('/api/demo/status');
   if (!r.ok) throw new Error(`Demo API error: ${r.status}`);
   return r.json();
 }

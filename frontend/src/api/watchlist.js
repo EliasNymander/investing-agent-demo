@@ -1,7 +1,8 @@
 const BASE = '/api/watchlist';
+import { demoFetch } from './demoFetch.js';
 
 export const fetchWatchlist = () =>
-  fetch(BASE).then((r) => r.json()).then((r) => ({ items: r.data, triggeredCount: r.triggeredCount }));
+  demoFetch(BASE).then((r) => r.json()).then((r) => ({ items: r.data, triggeredCount: r.triggeredCount }));
 
 export const addWatchlistItem = (item) =>
   fetch(BASE, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(item) })

@@ -5,6 +5,7 @@ import PlatformTable from '../components/tax/PlatformTable.jsx';
 import ManualEntryModal from '../components/tax/ManualEntryModal.jsx';
 import YearChart from '../components/tax/YearChart.jsx';
 import { useTax } from '../hooks/useTax.js';
+import { DEMO_MODE } from '../api/demoFetch.js';
 import './TaxPage.css';
 
 const BRACKET_1_RATE  = 0.30;
@@ -17,7 +18,7 @@ function calcTax(netGainEur) {
   return +(BRACKET_1_LIMIT * BRACKET_1_RATE + (netGainEur - BRACKET_1_LIMIT) * BRACKET_2_RATE).toFixed(2);
 }
 
-const AVAILABLE_YEARS = [2026, 2025, 2024, 2023];
+const AVAILABLE_YEARS = DEMO_MODE ? [2026] : [2026, 2025, 2024, 2023];
 
 // ── Helpers ───────────────────────────────────────────────────────────────────
 

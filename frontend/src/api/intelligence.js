@@ -1,2 +1,4 @@
+import { demoFetch } from './demoFetch.js';
+
 export const fetchIntelligenceFeed = () =>
-  fetch('/api/intelligence').then((r) => r.json()).then((r) => r.data);
+  demoFetch('/api/intelligence').then((r) => r.json()).then((r) => r.data);

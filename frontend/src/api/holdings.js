@@ -1,5 +1,7 @@
+import { demoFetch } from './demoFetch.js';
+
 export const fetchHoldings = () =>
-  fetch('/api/holdings')
+  demoFetch('/api/holdings')
     .then((r) => { if (!r.ok) throw new Error(`HTTP ${r.status}`); return r.json(); })
     .then((r) => r.data);
 
