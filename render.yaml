@@ -1,0 +1,17 @@
+# Render Blueprint for the investing-agent-demo public chat backend.
+# This deploys ONLY the minimal chat service (backend/server.chat.js) —
+# not the full private-app backend. See SCRUM-56.
+services:
+  - type: web
+    name: investing-agent-demo-chat
+    runtime: node
+    plan: free
+    rootDir: backend
+    buildCommand: npm install
+    startCommand: npm run start:chat
+    healthCheckPath: /api/health
+    envVars:
+      - key: OPENROUTER_API_KEY
+        sync: false   # set manually in Render dashboard — never committed
+      - key: NODE_ENV
+        value: production

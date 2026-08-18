@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "node --watch server.js",
-    "start": "node server.js"
+    "start": "node server.js",
+    "start:chat": "node server.chat.js"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.39.0",
