@@ -9,7 +9,11 @@
 // backend's own fallback logic.
 
 const CHAT_BACKEND_URL = import.meta.env.VITE_CHAT_BACKEND_URL;
-const REQUEST_TIMEOUT_MS = 15_000;
+// 30s, not the original 15s -- SCRUM-56's live verification measured a
+// real Render cold-start wake time of 22.4s. 15s guaranteed a cold
+// visitor's first message always hit this fallback instead of a live
+// reply; 30s gives it a real chance while still bounding the wait.
+const REQUEST_TIMEOUT_MS = 30_000;
 const SESSION_KEY = 'ia_chat_session_id';
 
 const UNREACHABLE_MESSAGE =
