@@ -15,6 +15,18 @@ import chatRouter from './routes/chat.js';
 const app = express();
 const PORT = parseInt(process.env.PORT || '3001', 10);
 
+// Render sits behind a reverse-proxy chain (Cloudflare edge + Render's own
+// load balancer) -- without this, Express's req.ip/req.protocol resolve
+// against the nearest proxy, not the real visitor. Render doesn't document
+// the exact hop count (checked); 3 is a community-tested value I could not
+// independently verify (the only source, a Render community thread, is
+// unreachable from here -- DNS resolution to render.discourse.group fails
+// consistently). Kept as a reasonable default for Express's general
+// proxy-aware behavior. The rate limiter itself (routes/chat.js) doesn't
+// depend on this number being exactly right -- it reads the Cloudflare-set
+// True-Client-IP header directly, which callers can't spoof.
+app.set('trust proxy', 3);
+
 // Restrict to this project's Vercel domains (prod + preview deployments)
 // plus local frontend dev — this is a public free-tier OpenRouter proxy,
 // no reason to let arbitrary third-party sites embed it.
