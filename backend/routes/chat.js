@@ -35,6 +35,10 @@ function buildMockReply(reason) {
 // can't spoof it by prepending fake entries. Falls back to req.ip for
 // local dev, where this header won't be present.
 function clientIp(req) {
+  // SCRUM-59 verification: confirming this header is actually present on
+  // real Render traffic (research suggested it, hadn't been observed on
+  // this specific deployment). Remove once confirmed via live logs.
+  console.log(`[chat route] true-client-ip: ${req.headers['true-client-ip'] ?? 'MISSING'}, req.ip: ${req.ip}`);
   return req.headers['true-client-ip'] ?? req.ip;
 }
 
