@@ -53,6 +53,13 @@ const chatRateLimit = new Ratelimit({
 });
 
 router.post('/', async (req, res) => {
+  // SCRUM-61 investigation: dumping the full header set (not just
+  // true-client-ip) to see everything Cloudflare/Render actually attach to
+  // a real cross-origin browser request, in case something besides the one
+  // header differs from the direct-HTTP-client shape SCRUM-59 tested with.
+  // Temporary -- remove once the investigation concludes either way.
+  console.log(`[chat route] SCRUM-61 headers dump: ${JSON.stringify(req.headers)}`);
+
   const { query, sessionId } = req.body ?? {};
 
   if (!query || typeof query !== 'string' || !query.trim()) {
