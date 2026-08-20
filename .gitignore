@@ -1,5 +1,6 @@
 node_modules/
 .env
+.env.scrum59-test 
 /user_config.json
 /journal.json
 /watchlist.json
