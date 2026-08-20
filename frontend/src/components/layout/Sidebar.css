@@ -88,3 +88,26 @@
   padding: 16px 20px;
   border-top: 1px solid var(--border);
 }
+
+/* ── Mobile off-canvas (SCRUM-63) ─────────────────────────────────────────
+   Below 640px the sidebar slides fully off-screen by default and only
+   the .sidebar--open class (driven by Layout.jsx's state) brings it back.
+   Everything here is scoped inside the media query, so above 640px this
+   block simply doesn't apply -- the base .sidebar rule above (unconditional
+   position:fixed, no transform) is untouched and still governs desktop.
+   The close control (Layout.jsx's .mobile-nav-close) deliberately does
+   NOT live inside this component -- see Layout.css's stacking-order
+   comment for why a close control nested in either the sidebar or the
+   toggle bar can't reliably out-rank both the drawer and DemoModeBanner. */
+@media (max-width: 640px) {
+  .sidebar {
+    transform: translateX(-100%);
+    transition: transform 0.2s ease;
+    box-shadow: 4px 0 24px rgba(0, 0, 0, 0.3);
+    z-index: 150;
+  }
+
+  .sidebar.sidebar--open {
+    transform: translateX(0);
+  }
+}

@@ -10,3 +10,124 @@
   overflow-x: hidden;
   padding-bottom: 40px;
 }
+
+/* ── Mobile off-canvas toggle + backdrop (SCRUM-63) ────────────────────────
+   z-index stacking, high to low: .mobile-nav-close (1001, explicitly above
+   the banner) > DemoModeBanner (1000, otherwise always on top; also
+   covers part of the sidebar's own logo row when open -- pre-existing,
+   unrelated to this fix, the same overlap already happens on desktop) >
+   chat FAB/panel (1000/999, opposite corner, no overlap) > .sidebar--open
+   (150, Sidebar.css) > .mobile-nav-backdrop (140) > .mobile-nav-bar (120)
+   > normal content.
+
+   .mobile-nav-close is a standalone position:fixed element -- not nested
+   inside <Sidebar>, not part of .mobile-nav-bar -- specifically so it can
+   out-rank BOTH the sidebar and the banner without being capped by
+   either's own z-index. A positioned ancestor traps its descendants'
+   z-index comparisons within its own stacking context; two earlier
+   attempts hit that same wall from different angles:
+     1. A toggle button nested inside .mobile-nav-bar: raising the
+        button's own z-index did nothing, because .mobile-nav-bar itself
+        (position:sticky + z-index) is what's actually compared against
+        .sidebar at the outer level, not its children individually.
+     2. Raising .mobile-nav-bar's own z-index above the sidebar fixed
+        that, but the bar is a full-width strip, so it also buried the
+        sidebar's own first nav item (Dashboard) underneath it.
+     3. Moving the close button inside the sidebar's own logo row avoided
+        fighting the sidebar's content, but put it in the same y-range
+        DemoModeBanner already overlaps, burying it there instead.
+   A standalone fixed-position sibling at a small fixed offset sidesteps
+   all three: its position doesn't depend on the banner's height (relevant
+   since SCRUM-62 will make that height variable), and it isn't a
+   descendant of anything whose own z-index could cap it.
+
+   .mobile-nav-bar/.mobile-nav-toggle only ever need to OPEN the drawer --
+   once open, closing goes through .mobile-nav-close, the backdrop, or any
+   nav link, so the bar staying below the sidebar (irrelevant once
+   covered) is fine.
+   Hidden by default so stale sidebarOpen state (e.g. resizing from mobile
+   to desktop while the drawer is open) can't render any of these outside
+   the breakpoint where they're meant to apply -- JS never branches on
+   viewport width, only these queries do. */
+.mobile-nav-bar {
+  display: none;
+}
+
+.mobile-nav-backdrop {
+  display: none;
+}
+
+.mobile-nav-close {
+  display: none;
+}
+
+@media (max-width: 640px) {
+  .app-main {
+    margin-left: 0;
+  }
+
+  .mobile-nav-bar {
+    display: flex;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 120;
+    padding: 10px 16px;
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .mobile-nav-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--border);
+    background: var(--surface-2);
+    color: var(--text);
+    font-size: 16px;
+    cursor: pointer;
+    transition: color 0.15s, border-color 0.15s, background 0.15s;
+  }
+
+  .mobile-nav-toggle:hover {
+    color: var(--accent);
+    border-color: var(--border-light);
+    background: var(--surface);
+  }
+
+  .mobile-nav-backdrop {
+    display: block;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 140;
+  }
+
+  .mobile-nav-close {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    top: 16px;
+    left: calc(var(--sidebar-width) - 40px);
+    width: 28px;
+    height: 28px;
+    z-index: 1001;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--border);
+    background: var(--surface-2);
+    color: var(--text-muted);
+    font-size: 14px;
+    cursor: pointer;
+    transition: color 0.15s, border-color 0.15s, background 0.15s;
+  }
+
+  .mobile-nav-close:hover {
+    color: var(--text);
+    border-color: var(--border-light);
+    background: var(--surface);
+  }
+}

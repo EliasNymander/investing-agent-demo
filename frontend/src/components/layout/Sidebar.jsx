@@ -35,14 +35,14 @@ const nav = [
   { to: '/settings', label: 'Settings', icon: '⚙' },
 ];
 
-export default function Sidebar() {
+export default function Sidebar({ isOpen = false, onClose }) {
   const { triggeredCount } = useWatchlist();
   const { status } = useSystemStatus();
   const verdict = status?.verdict ?? 'mock';
   const visibleNav = DEMO_MODE ? nav.filter((item) => !item.hideInDemo) : nav;
 
   return (
-    <nav className="sidebar">
+    <nav className={`sidebar${isOpen ? ' sidebar--open' : ''}`}>
       <div className="sidebar-logo">
         <span className="sidebar-logo-icon">◈</span>
         <span className="sidebar-logo-text">Investing<br />Agent</span>
@@ -53,6 +53,7 @@ export default function Sidebar() {
             <NavLink
               to={to}
               end={to === '/'}
+              onClick={onClose}
               className={({ isActive }) => `sidebar-link ${isActive ? 'active' : ''}`}
             >
               <span className="sidebar-link-icon">{icon}</span>
