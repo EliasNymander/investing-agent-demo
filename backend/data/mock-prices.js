@@ -86,6 +86,27 @@ export const mockPrices = {
     updatedAt: '2026-05-12T16:00:00Z',
     dataSource: 'CoinGecko (mock)',
   },
+  SPOT: {
+    price: 520.00,
+    prevClose: 518.19,
+    dailyPct: 0.35,
+    currency: 'USD',
+    updatedAt: '2026-05-12T17:30:00Z',
+  },
+  EQNR: {
+    price: 285.00,
+    prevClose: 286.29,
+    dailyPct: -0.45,
+    currency: 'NOK',
+    updatedAt: '2026-05-12T17:30:00Z',
+  },
+  KNEBV: {
+    price: 52.00,
+    prevClose: 51.87,
+    dailyPct: 0.25,
+    currency: 'EUR',
+    updatedAt: '2026-05-12T17:30:00Z',
+  },
 };
 
 export const fxRates = {
