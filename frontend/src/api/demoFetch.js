@@ -17,6 +17,8 @@ const FIXTURE_MAP = {
 };
 
 const TRACKED_ASSETS_RE = /^\/api\/accounts\/[^/]+\/tracked-assets$/;
+const HISTORY_TICKER_RE = /^\/api\/history\/ticker\/([^/]+)$/;
+const HISTORY_PLATFORM_RE = /^\/api\/history\/platform\/([^/]+)$/;
 
 function serveFixture(filename) {
   return fetch(`${FIXTURE_DIR}/${filename}`);
@@ -47,6 +49,18 @@ async function serveNews(params) {
   return jsonResponse({ ...body, data: { ...body.data, articles, total: articles.length } });
 }
 
+async function serveHistory(kind, id, period) {
+  const res = await serveFixture('history.json');
+  const body = await res.json();
+  const series = body[kind]?.[id]?.[period];
+  if (!series) {
+    const message = kind === 'ticker' ? 'No history available' : 'Platform not found';
+    return jsonResponse({ status: 'error', message }, 404);
+  }
+  const idKey = kind === 'ticker' ? 'ticker' : 'platform';
+  return jsonResponse({ status: 'ok', [idKey]: id, period, data: series });
+}
+
 export function demoFetch(url, init) {
   if (!DEMO_MODE) return fetch(url, init);
 
@@ -56,6 +70,13 @@ export function demoFetch(url, init) {
   if (path === '/api/demo/status') return Promise.resolve(jsonResponse({ isDemoMode: true }));
   if (path === '/api/scheduler/latest') return serveSchedulerLatest(params.get('type'));
   if (path === '/api/news') return serveNews(params);
+
+  const tickerMatch = path.match(HISTORY_TICKER_RE);
+  if (tickerMatch) return serveHistory('ticker', tickerMatch[1], params.get('period') || '1M');
+
+  const platformMatch = path.match(HISTORY_PLATFORM_RE);
+  if (platformMatch) return serveHistory('platform', platformMatch[1], params.get('period') || '1M');
+
   if (TRACKED_ASSETS_RE.test(path)) return serveFixture('tracked-assets.json');
 
   const filename = FIXTURE_MAP[path];
