@@ -1,0 +1,67 @@
+{
+  "status": "ok",
+  "data": {
+    "alerts": [
+      {
+        "id": "pa-001",
+        "active": true,
+        "triggered": false,
+        "type": "price_target",
+        "ticker": "ASML",
+        "name": "ASML Holding",
+        "condition": "above",
+        "targetValue": 950,
+        "currency": "EUR",
+        "currentPrice": 940.0,
+        "distanceToTarget": -10.0,
+        "notifyVia": ["in_app", "email"],
+        "notes": "Watching for confirmation above the €900–€910 accumulation zone before this one fires."
+      },
+      {
+        "id": "pa-002",
+        "active": true,
+        "triggered": false,
+        "type": "price_target",
+        "ticker": "NOVO-B",
+        "name": "Novo Nordisk B",
+        "condition": "below",
+        "targetValue": 520,
+        "currency": "DKK",
+        "currentPrice": 545.0,
+        "distanceToTarget": 25.0,
+        "notifyVia": ["in_app"],
+        "notes": "Stop-review level from the latest signal."
+      },
+      {
+        "id": "pa-003",
+        "active": true,
+        "triggered": false,
+        "type": "price_target",
+        "ticker": "NOVO-B",
+        "name": "Novo Nordisk B",
+        "condition": "above",
+        "targetValue": 595,
+        "currency": "DKK",
+        "currentPrice": 545.0,
+        "distanceToTarget": -50.0,
+        "notifyVia": ["in_app", "email"],
+        "notes": "Breakout add level from the latest signal."
+      },
+      {
+        "id": "pa-004",
+        "active": true,
+        "triggered": true,
+        "type": "daily_pct_move",
+        "ticker": "BTC",
+        "name": "Bitcoin",
+        "condition": "up_pct",
+        "targetValue": 2,
+        "currency": "EUR",
+        "currentPrice": 58200,
+        "dailyPct": 3,
+        "notifyVia": ["in_app"]
+      }
+    ],
+    "triggeredCount": 1
+  }
+}

@@ -1,8 +1,10 @@
+import { demoFetch } from './demoFetch.js';
+
 const BASE = '/api/price-alerts';
 const JSON_HEADERS = { 'Content-Type': 'application/json' };
 
 export const fetchPriceAlerts = () =>
-  fetch(BASE).then((r) => r.json()).then((r) => r.data);
+  demoFetch(BASE).then((r) => r.json()).then((r) => r.data);
 
 export const addPriceAlert = (data) =>
   fetch(BASE, { method: 'POST', headers: JSON_HEADERS, body: JSON.stringify(data) })

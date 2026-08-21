@@ -13,6 +13,7 @@ const FIXTURE_MAP = {
   '/api/signals': 'signals.json',
   '/api/tax': 'tax.json',
   '/api/intelligence': 'intelligence.json',
+  '/api/price-alerts': 'price-alerts.json',
 };
 
 const TRACKED_ASSETS_RE = /^\/api\/accounts\/[^/]+\/tracked-assets$/;
