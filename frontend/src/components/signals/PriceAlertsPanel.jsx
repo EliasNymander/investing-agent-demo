@@ -9,6 +9,10 @@ import './PriceAlertsPanel.css';
 
 const DISMISS_KEY = 'pa-dismissed';
 
+// Mirrors WatchlistCard.jsx's SYM map (same problem, same codebase) plus NOK,
+// which is used in watchlist.json but was missing there too.
+const CURRENCY_SYMBOLS = { USD: '$', EUR: '€', SEK: 'kr', DKK: 'kr', NOK: 'kr', GBP: '£' };
+
 function loadDismissed() {
   try { return new Set(JSON.parse(localStorage.getItem(DISMISS_KEY) ?? '[]')); }
   catch { return new Set(); }
@@ -20,9 +24,17 @@ function saveDismissed(set) {
 
 function fmtPrice(v, currency) {
   if (v == null) return '—';
-  const sym = currency === 'EUR' ? '€' : currency === 'SEK' ? 'kr' : '$';
-  const decimals = v >= 1000 ? 0 : v >= 10 ? 2 : v >= 1 ? 3 : 4;
-  return `${sym}${v.toLocaleString('en-US', { minimumFractionDigits: decimals, maximumFractionDigits: decimals })}`;
+  const sym = CURRENCY_SYMBOLS[currency];
+  // Threshold selection must key off magnitude, not the signed value -- a
+  // negative v otherwise fails every ">=" branch and falls into the 4-decimal
+  // case meant for sub-1 magnitudes (SCRUM-66). v itself (still signed) goes
+  // to toLocaleString, which already renders the "-" correctly on its own.
+  const mag = Math.abs(v);
+  const decimals = mag >= 1000 ? 0 : mag >= 10 ? 2 : mag >= 1 ? 3 : 4;
+  const formatted = v.toLocaleString('en-US', { minimumFractionDigits: decimals, maximumFractionDigits: decimals });
+  // Unmapped currency: show the raw ISO code instead of silently defaulting
+  // to $ (visibly wrong beats silently wrong as USD).
+  return sym ? `${sym}${formatted}` : `${formatted} ${currency}`;
 }
 
 function fmtPct(v) {
